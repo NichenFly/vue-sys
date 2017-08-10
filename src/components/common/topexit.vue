@@ -8,19 +8,17 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
-  data () {
-    return {
-      user: {
-        name: '123'
-      }
-    }
+  computed: {
+    ...mapGetters([
+      'user'
+    ])
   },
   methods: {
-    logOut () {
-      sessionStorage.clear()
-      location.reload()
-    }
+    ...mapActions([
+      'logOut'
+    ])
   }
 }
 </script>
@@ -40,7 +38,7 @@ export default {
 			padding-left: 10px;
 			margin-left: 10px;
 			border-left: 1px solid #9ba7b5;
-			&:first-child{
+			&:first-child {
 				border-left: none;
 				padding-left: 0;
 				margin-left: 0;

@@ -7,24 +7,17 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
-  data () {
-    return {
-      routernav: [
-        {
-          to: '/index',
-          name: '首页'
-        }, {
-          to: '/user',
-          name: '个人中心'
-        }
-      ]
-    }
+  computed: {
+    ...mapGetters([
+      'routernav'
+    ])
   },
   methods: {
-    to () {
-      localStorage.removeItem('breadcrumb')
-    }
+    ...mapActions([
+      'to'
+    ])
   }
 }
 </script>
