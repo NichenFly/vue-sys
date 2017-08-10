@@ -52,10 +52,15 @@ export default {
 .contain {
   width: 100%;
   height: 100%;
+  font-size: 0;
+  .leftnav,
+  .rightmain {
+    display: inline-block;
+    vertical-align: top;
+  }
   .leftnav {
     background-color: #324157;
     color: #bfcbd9;
-    float: left;
     height: 100%;
     width: 20%;
     overflow-y: auto;
@@ -64,8 +69,7 @@ export default {
     }
   }
   .rightmain {
-    width: 80%;
-    margin-left: 20%;
+    width: 78%;
     position: absolute;
     top: 80px;
     bottom: 40px;
