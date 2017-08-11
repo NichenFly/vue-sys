@@ -7,12 +7,6 @@ export default {
       }, {
         to: '/read',
         name: '小思阅读'
-      }, {
-        to: '/arts',
-        name: '小思艺术'
-      }, {
-        to: '/course',
-        name: '小思课程'
       }
     ]
   },

@@ -35,7 +35,7 @@ export default {
 
 <style scoped lang="scss">
 .rightmain {
-  width: 80%;
+  width: 78%;
   margin-left: 20%;
   position: absolute;
   top: 0;
