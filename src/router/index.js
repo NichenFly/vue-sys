@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
 
-const index = resolve => require(['views/index'], resolve)
+const user = resolve => require(['views/user'], resolve)
 const contain = resolve => require(['views/contain'], resolve)
 
 const vuetable = resolve => require(['components/pages/vueTable'], resolve)
@@ -17,10 +17,10 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: 'index'
+      redirect: 'read'
     }, {
-      path: '/index',
-      component: index
+      path: '/user',
+      component: user
     }, {
       path: '/read',
       component: contain,

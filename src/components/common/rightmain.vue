@@ -3,6 +3,9 @@
     <router-link :to="nowPages">
       <el-tabs :value="tabsList" type="card" closable @tab-remove="removeTab" @tab-click="tabsCut" v-if="tabsList">
         <el-tab-pane v-for="(item, index) in editableTabs" :key="item.name" :label="item.title" :name="item.name">
+          <el-breadcrumb separator="/" v-if="breadcrumb">
+            <el-breadcrumb-item v-for="li in breadcrumb" :key="li.index">{{li}}</el-breadcrumb-item>
+          </el-breadcrumb>
           <transition name="fold">
             <keep-alive>
               <router-view></router-view>
@@ -21,7 +24,8 @@ export default {
     ...mapGetters([
       'nowPages',
       'tabsList',
-      'editableTabs'
+      'editableTabs',
+      'breadcrumb'
     ])
   },
   methods: {
@@ -42,6 +46,9 @@ export default {
   bottom: 0;
   padding: 1%;
   overflow-y: auto;
+  .el-breadcrumb{
+    padding-bottom: 15px;
+  }
   .ivu-breadcrumb {
     margin-bottom: 10px;
   }

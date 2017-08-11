@@ -5,29 +5,38 @@ export default {
   state: {
     editableTabs: [],
     topItems: [],
+    breadcrumb: [],
     tabsList: '',
     nowPages: ''
   },
   getters: {
-    tabsList: state => state.tabsList,
     editableTabs: state => state.editableTabs,
     topItems: state => state.topItems,
+    breadcrumb: state => state.breadcrumb,
+    tabsList: state => state.tabsList,
     nowPages: state => state.nowPages
   },
   mutations: {
+    // 获取数据
     [types.GET_ITEMS] (state, action) {
       state.topItems = action.topItems
     },
-
+    // 切换tab
     [types.TABS_CUT] (state, targetName) {
       let Inx = targetName.index
       state.nowPages = state.editableTabs[Inx].index
     },
-
+    // 增加tab
     [types.ADD_TAB] (state, subitem) {
       let tabs = state.editableTabs
       let newTabName = ++state.tabsList + ''
       state.tabsList = newTabName
+      // 面包屑
+      let listinx = subitem.name.split('-').map((a) => --a)
+      let topnav = state.topItems[listinx[0]].title
+      let leftnav = state.topItems[listinx[0]].items[listinx[1]].title
+      let righttab = subitem.title
+      state.breadcrumb = [topnav, leftnav, righttab]
       // 增加tabs
       tabs.push({
         title: subitem.title,
@@ -53,6 +62,7 @@ export default {
       state.editableTabs = rightTab
     },
 
+    // 删除tab
     [types.REMOVE_TAB] (state, targetName) {
       let tabs = state.editableTabs
       let activeName = state.tabsList
@@ -60,6 +70,7 @@ export default {
         tabs.forEach((tab, index) => {
           if (tab.name === targetName) {
             let nextTab = tabs[index + 1] || tabs[index - 1]
+            console.log(nextTab)
             if (nextTab) {
               activeName = nextTab.name
             }
