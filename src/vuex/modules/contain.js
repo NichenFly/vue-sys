@@ -29,8 +29,7 @@ export default {
     // 增加tab
     [types.ADD_TAB] (state, subitem) {
       let tabs = state.editableTabs
-      let newTabName = ++state.tabsList + ''
-      state.tabsList = newTabName
+      state.tabsList = parseInt(10000 * Math.random()) + ''
       // 面包屑
       let listinx = subitem.name.split('-').map((a) => --a)
       let topnav = state.topItems[listinx[0]].title
@@ -40,20 +39,20 @@ export default {
       // 增加tabs
       tabs.push({
         title: subitem.title,
-        index: subitem.index,
-        name: tabs.length + 1 + ''
+        link: subitem.link,
+        name: parseInt(10000 * Math.random()) + ''
       })
       // 对比右列表，去重
       var rightTab = []
       var set = new Set()
       tabs.forEach((tab) => {
-        if (!set.has(tab.index)) {
+        if (!set.has(tab.link)) {
           rightTab.push(tab)
-          set.add(tab.index)
+          set.add(tab.link)
         } else {
           for (var i = 0; i < rightTab.length; i++) {
             var e = rightTab[i]
-            if (e.index === subitem.index) {
+            if (e.link === subitem.link) {
               state.tabsList = e.name + ''
             }
           }
