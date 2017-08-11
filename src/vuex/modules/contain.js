@@ -40,8 +40,8 @@ export default {
       // 增加tabs
       tabs.push({
         title: subitem.title,
-        name: newTabName,
-        index: subitem.index
+        index: subitem.index,
+        name: tabs.length + 1 + ''
       })
       // 对比右列表，去重
       var rightTab = []
@@ -54,7 +54,7 @@ export default {
           for (var i = 0; i < rightTab.length; i++) {
             var e = rightTab[i]
             if (e.index === subitem.index) {
-              state.tabsList = i + 1 + ''
+              state.tabsList = e.name + ''
             }
           }
         }
