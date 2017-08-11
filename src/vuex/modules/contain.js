@@ -58,7 +58,7 @@ export default {
   },
   actions: {
     getItems ({commit}, key) {
-      axios.get('https://www.easy-mock.com/mock/59439d588ac26d795f1a82e9/data/data')
+      axios.get('https://www.easy-mock.com/mock/594b682e8ac26d795f42fdff/demo2/data')
         .then(function (res) {
           commit('GET_ITEMS', res.data)
         })

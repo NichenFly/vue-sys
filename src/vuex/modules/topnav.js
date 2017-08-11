@@ -5,8 +5,14 @@ export default {
         to: '/index',
         name: '首页'
       }, {
-        to: '/user',
-        name: '个人中心'
+        to: '/read',
+        name: '小思阅读'
+      }, {
+        to: '/arts',
+        name: '小思艺术'
+      }, {
+        to: '/course',
+        name: '小思课程'
       }
     ]
   },
@@ -15,8 +21,6 @@ export default {
   },
   mutations: {
     to (state) {
-      localStorage.removeItem('breadcrumb')
-      location.reload()
     }
   },
   actions: {

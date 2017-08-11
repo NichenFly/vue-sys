@@ -1,80 +1,28 @@
 <template>
   <div class="contain">
-    <div class="leftnav">
-      <el-menu theme="dark" unique-opened class="el-menu-vertical-demo" default-active="index" router v-for="(left,index) in topItems" :key="left.index" v-if="nowIndex===index">
-        <el-submenu v-for="item in left.items" :key="item.index" :index="item.index">
-          <template slot="title">
-            <i :class="item.icon"></i>{{item.title}}
-          </template>
-          <el-menu-item v-for="subitem in item.subs" :key="subitem.index" :index="subitem.index" @click="addTab(subitem)">{{subitem.title}}</el-menu-item>
-        </el-submenu>
-      </el-menu>
-    </div>
-    <div class="rightmain">
-      <router-link :to="nowPages">
-        <el-tabs :value="tabsList" type="card" closable @tab-remove="removeTab" @tab-click="tabsCut" v-if="tabsList">
-          <el-tab-pane v-for="(item, index) in editableTabs" :key="item.name" :label="item.title" :name="item.name">
-            <keep-alive>
-              <router-view></router-view>
-            </keep-alive>
-          </el-tab-pane>
-        </el-tabs>
-      </router-link>
-    </div>
+    <left-nav></left-nav>
+    <right-main></right-main>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import leftNav from 'components/common/leftnav'
+import rightMain from 'components/common/rightmain'
 export default {
-  computed: {
-    ...mapGetters([
-      'nowIndex',
-      'topItems',
-      'tabsList',
-      'editableTabs',
-      'tabIndex',
-      'nowPages',
-      'getItems'
-    ])
-  },
-  methods: {
-    ...mapActions([
-      'addTab',
-      'removeTab',
-      'tabsCut'
-    ])
+  components: {
+    leftNav,
+    rightMain
   }
 }
 </script>
 
 <style scoped lang="scss">
 .contain {
-  width: 100%;
-  height: 100%;
-  font-size: 0;
-  .leftnav,
-  .rightmain {
-    display: inline-block;
-    vertical-align: top;
-  }
-  .leftnav {
-    background-color: #324157;
-    color: #bfcbd9;
-    height: 100%;
-    width: 20%;
-    overflow-y: auto;
-    ul {
-      height: 100%;
-    }
-  }
-  .rightmain {
-    width: 78%;
+    width: 100%;
     position: absolute;
     top: 80px;
     bottom: 40px;
-    padding: 1%;
-    overflow-y: auto;
-  }
+    border-top: 1px solid #d7dde4;
+    border-bottom: 1px solid #d7dde4;
 }
 </style>

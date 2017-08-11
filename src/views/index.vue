@@ -12,6 +12,6 @@ export default {
 
 <style scoped lang="scss">
   .hello{
-
+    padding: 10px;
   }
 </style>

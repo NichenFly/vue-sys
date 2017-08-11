@@ -2,7 +2,7 @@
   <div id="app">
     <top-exit></top-exit>
     <top-nav></top-nav>
-    <transition name="slide-fade">
+    <transition name="slide-fade" mode="out-in">
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
@@ -38,7 +38,7 @@ export default {
 }
 
 .slide-fade-leave-active {
-  transition: all .8s ease-in-out;
+  transition: all .5s ease-in-out;
 }
 
 .slide-fade-enter,

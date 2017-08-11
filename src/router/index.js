@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
 
-const Hello = resolve => require(['views/Hello'], resolve)
+const index = resolve => require(['views/index'], resolve)
 const contain = resolve => require(['views/contain'], resolve)
 
 const vuetable = resolve => require(['components/pages/vueTable'], resolve)
@@ -17,10 +17,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Hello
+      redirect: 'index'
+    }, {
+      path: '/index',
+      component: index
     }, {
       path: '/read',
-      alias: '/index',
       component: contain,
       children: [
         {
@@ -44,6 +46,42 @@ export default new Router({
         }, {
           path: '/read/vuetransfer',
           component: vuetransfer
+        }
+      ]
+    }, {
+      path: '/arts',
+      component: contain,
+      children: [
+        {
+          path: '/arts/vuetable',
+          component: vuetable
+        }, {
+          path: '/arts/vueform',
+          component: vueform
+        }, {
+          path: '/arts/vuecascader',
+          component: vuecascader
+        }, {
+          path: '/arts/vueslider',
+          component: vueslider
+        }
+      ]
+    }, {
+      path: '/course',
+      component: contain,
+      children: [
+        {
+          path: '/course/vuetable',
+          component: vuetable
+        }, {
+          path: '/course/vueform',
+          component: vueform
+        }, {
+          path: '/course/vueupload',
+          component: vueupload
+        }, {
+          path: '/course/vuecascader',
+          component: vuecascader
         }
       ]
     }
