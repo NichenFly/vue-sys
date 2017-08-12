@@ -29,8 +29,7 @@ export default {
     // 增加tab
     [types.ADD_TAB] (state, subitem) {
       let tabs = state.editableTabs
-      let newTabName = ++state.tabsList + ''
-      state.tabsList = newTabName
+      state.tabsList = subitem.name
       // 面包屑
       let listinx = subitem.name.split('-').map((a) => --a)
       let topnav = state.topItems[listinx[0]].title
@@ -40,7 +39,7 @@ export default {
       // 增加tabs
       tabs.push({
         title: subitem.title,
-        name: newTabName,
+        name: subitem.name,
         link: subitem.link
       })
       // 对比右列表，去重
@@ -50,13 +49,6 @@ export default {
         if (!set.has(tab.link)) {
           rightTab.push(tab)
           set.add(tab.link)
-        } else {
-          for (var i = 0; i < rightTab.length; i++) {
-            var e = rightTab[i]
-            if (e.index === subitem.link) {
-              state.tabsList = i + 1 + ''
-            }
-          }
         }
       })
       state.editableTabs = rightTab
@@ -70,7 +62,6 @@ export default {
         tabs.forEach((tab, index) => {
           if (tab.name === targetName) {
             let nextTab = tabs[index + 1] || tabs[index - 1]
-            console.log(nextTab)
             if (nextTab) {
               activeName = nextTab.name
             }
