@@ -7,14 +7,16 @@ export default {
     topItems: [],
     breadcrumb: [],
     tabsList: '',
-    nowPages: ''
+    nowPages: '',
+    nowActive: ''
   },
   getters: {
     editableTabs: state => state.editableTabs,
     topItems: state => state.topItems,
     breadcrumb: state => state.breadcrumb,
     tabsList: state => state.tabsList,
-    nowPages: state => state.nowPages
+    nowPages: state => state.nowPages,
+    nowActive: state => state.nowActive
   },
   mutations: {
     // 获取数据
@@ -24,7 +26,7 @@ export default {
     // 切换tab
     [types.TABS_CUT] (state, targetName) {
       let Inx = targetName.index
-      state.nowPages = state.editableTabs[Inx].index
+      state.nowPages = state.editableTabs[Inx].link
     },
     // 增加tab
     [types.ADD_TAB] (state, subitem) {
@@ -58,16 +60,15 @@ export default {
     [types.REMOVE_TAB] (state, targetName) {
       let tabs = state.editableTabs
       let activeName = state.tabsList
-      if (activeName === targetName) {
-        tabs.forEach((tab, index) => {
-          if (tab.name === targetName) {
-            let nextTab = tabs[index + 1] || tabs[index - 1]
-            if (nextTab) {
-              activeName = nextTab.name
-            }
+      tabs.forEach((tab, index) => {
+        if (tab.name === targetName) {
+          let nextTab = tabs[index + 1] || tabs[index - 1]
+          if (nextTab) {
+            activeName = nextTab.name
+            state.nowActive = nextTab.name
           }
-        })
-      }
+        }
+      })
       state.tabsList = activeName
       state.editableTabs = tabs.filter(tab => tab.name !== targetName)
     }

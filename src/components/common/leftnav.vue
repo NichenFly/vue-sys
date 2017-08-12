@@ -1,6 +1,6 @@
 <template>
   <div class="leftnav">
-    <el-menu theme="dark" unique-opened default-active="index" router v-for="(left,index) in topItems" :key="left.index">
+    <el-menu theme="dark" unique-opened v-for="left in topItems" :default-active="nowActive" :key="left.index">
       <el-submenu v-for="item in left.items" :key="item.index" :index="item.name">
         <template slot="title">
           <i :class="item.icon"></i>{{item.title}}
@@ -16,7 +16,8 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   computed: {
     ...mapGetters([
-      'topItems'
+      'topItems',
+      'nowActive'
     ])
   },
   methods: {
