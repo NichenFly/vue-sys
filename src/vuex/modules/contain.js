@@ -61,14 +61,16 @@ export default {
     [types.REMOVE_TAB] (state, tabname) {
       let tabs = state.tabList
       let activeName = state.nowTab
-      tabs.forEach((tab, index) => {
-        if (tab.name === tabname) {
-          let nextTab = tabs[index + 1] || tabs[index - 1]
-          if (nextTab) {
-            activeName = nextTab.name
+      if (activeName === tabname) {
+        tabs.forEach((tab, index) => {
+          if (tab.name === tabname) {
+            let nextTab = tabs[index + 1] || tabs[index - 1]
+            if (nextTab) {
+              activeName = nextTab.name
+            }
           }
-        }
-      })
+        })
+      }
       state.nowTab = activeName
       state.tabList = tabs.filter(tab => tab.name !== tabname)
     }
