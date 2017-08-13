@@ -1,8 +1,8 @@
 <template>
   <div class="rightmain">
     <router-link :to="nowPages">
-      <el-tabs :value="tabsList" type="card" closable @tab-remove="removeTab" @tab-click="tabsCut" v-if="tabsList">
-        <el-tab-pane v-for="(item, index) in editableTabs" :key="item.name" :label="item.title" :name="item.name">
+      <el-tabs type="card" closable :value="nowTab" @tab-remove="removeTab" @tab-click="tabCut" v-if="nowTab">
+        <el-tab-pane v-for="(item, index) in tabList" :key="item.name" :label="item.title" :name="item.name">
           <el-breadcrumb separator="/" v-if="breadcrumb">
             <el-breadcrumb-item v-for="li in breadcrumb" :key="li.index">{{li}}</el-breadcrumb-item>
           </el-breadcrumb>
@@ -23,15 +23,15 @@ export default {
   computed: {
     ...mapGetters([
       'nowPages',
-      'tabsList',
-      'editableTabs',
+      'nowTab',
+      'tabList',
       'breadcrumb'
     ])
   },
   methods: {
     ...mapActions([
       'removeTab',
-      'tabsCut'
+      'tabCut'
     ])
   }
 }

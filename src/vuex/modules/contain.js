@@ -3,46 +3,43 @@ import axios from 'axios'
 
 export default {
   state: {
-    editableTabs: [],
-    topItems: [],
+    // 左侧导航
+    navItems: [],
+    // 右侧内容
+    tabList: [],
     breadcrumb: [],
-    tabsList: '',
-    nowPages: '',
-    nowActive: ''
+    nowTab: '',
+    nowPages: ''
   },
   getters: {
-    editableTabs: state => state.editableTabs,
-    topItems: state => state.topItems,
+    // 左侧导航
+    navItems: state => state.navItems,
+    // 右侧内容
+    tabList: state => state.tabList,
     breadcrumb: state => state.breadcrumb,
-    tabsList: state => state.tabsList,
     nowPages: state => state.nowPages,
-    nowActive: state => state.nowActive
+    nowTab: state => state.nowTab
   },
   mutations: {
     // 获取数据
-    [types.GET_ITEMS] (state, action) {
-      state.topItems = action.topItems
+    [types.GET_ITEMS] (state, res) {
+      state.navItems = res.navItems
     },
     // 切换tab
-    [types.TABS_CUT] (state, targetName) {
-      let Inx = targetName.index
-      state.nowPages = state.editableTabs[Inx].link
+    [types.TAB_CUT] (state, tabname) {
+      let Inx = tabname.index
+      state.nowPages = state.tabList[Inx].link
+      // 反推左边区域
     },
     // 增加tab
-    [types.ADD_TAB] (state, subitem) {
-      let tabs = state.editableTabs
-      state.tabsList = subitem.name
-      // 面包屑
-      let listinx = subitem.name.split('-').map((a) => --a)
-      let topnav = state.topItems[listinx[0]].title
-      let leftnav = state.topItems[listinx[0]].items[listinx[1]].title
-      let righttab = subitem.title
-      state.breadcrumb = [topnav, leftnav, righttab]
+    [types.ADD_TAB] (state, RPC) {
+      let tabs = state.tabList
+      state.nowTab = RPC.name
       // 增加tabs
       tabs.push({
-        title: subitem.title,
-        name: subitem.name,
-        link: subitem.link
+        title: RPC.title,
+        name: RPC.name,
+        link: RPC.link
       })
       // 对比右列表，去重
       var rightTab = []
@@ -53,24 +50,27 @@ export default {
           set.add(tab.link)
         }
       })
-      state.editableTabs = rightTab
+      state.tabList = rightTab
+      // 面包屑
+      state.breadcrumb = RPC.breadcrumb
+      // 当前页面
+      state.activedIndex = RPC.link
     },
 
     // 删除tab
-    [types.REMOVE_TAB] (state, targetName) {
-      let tabs = state.editableTabs
-      let activeName = state.tabsList
+    [types.REMOVE_TAB] (state, tabname) {
+      let tabs = state.tabList
+      let activeName = state.nowTab
       tabs.forEach((tab, index) => {
-        if (tab.name === targetName) {
+        if (tab.name === tabname) {
           let nextTab = tabs[index + 1] || tabs[index - 1]
           if (nextTab) {
             activeName = nextTab.name
-            state.nowActive = nextTab.name
           }
         }
       })
-      state.tabsList = activeName
-      state.editableTabs = tabs.filter(tab => tab.name !== targetName)
+      state.nowTab = activeName
+      state.tabList = tabs.filter(tab => tab.name !== tabname)
     }
   },
   actions: {
@@ -83,9 +83,9 @@ export default {
         })
     },
 
-    tabsCut: ({
+    tabCut: ({
       commit
-    }, key) => commit('TABS_CUT', key),
+    }, key) => commit('TAB_CUT', key),
 
     addTab: ({
       commit
