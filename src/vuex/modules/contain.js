@@ -63,6 +63,8 @@ export default {
       let activeTab = state.nowTab
       let activePage = state.nowPages
       if (activeTab === tabname) {
+        activePage = ''
+        activeTab = ''
         tabs.forEach((tab, index) => {
           if (tab.name === tabname) {
             let nextTab = tabs[index + 1] || tabs[index - 1]
