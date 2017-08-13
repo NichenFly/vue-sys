@@ -1,5 +1,6 @@
 import * as types from './../mutations-types'
 import axios from 'axios'
+import router from 'router'
 
 export default {
   state: {
@@ -78,6 +79,10 @@ export default {
       state.nowTab = activeTab
       state.nowPages = activePage
       state.tabList = tabs.filter(tab => tab.name !== tabname)
+      // 如果数据为空，返回当前首页
+      if (tabs) {
+        router.push('/')
+      }
     }
   },
   actions: {

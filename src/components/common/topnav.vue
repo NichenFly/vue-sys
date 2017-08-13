@@ -1,7 +1,7 @@
 <template>
   <ul class="topnav">
-    <li @click='to' v-for="link in routernav" :key="link.index">
-      <router-link :to="link.to">{{link.name}}</router-link>
+    <li v-for="(li,index) in navItems" :key="li.index" @click="to(index)">
+      <router-link :to="li.link">{{li.title}}</router-link>
     </li>
   </ul>
 </template>
@@ -11,7 +11,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   computed: {
     ...mapGetters([
-      'routernav'
+      'navItems'
     ])
   },
   methods: {

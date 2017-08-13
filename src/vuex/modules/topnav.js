@@ -1,21 +1,14 @@
 export default {
   state: {
-    routernav: [{
-      to: '/read',
-      name: '小思阅读'
-    }, {
-      to: '/arts',
-      name: '小思艺术'
-    }, {
-      to: '/course',
-      name: '小思课程'
-    }]
+    nowIndex: 0
   },
   getters: {
-    routernav: state => state.routernav
+    nowIndex: state => state.nowIndex
   },
   mutations: {
-    to (state) {}
+    to (state, index) {
+      state.nowIndex = index
+    }
   },
   actions: {
     to: ({
