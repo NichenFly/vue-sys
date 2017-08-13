@@ -60,18 +60,21 @@ export default {
     // 删除tab
     [types.REMOVE_TAB] (state, tabname) {
       let tabs = state.tabList
-      let activeName = state.nowTab
-      if (activeName === tabname) {
+      let activeTab = state.nowTab
+      let activePage = state.nowPages
+      if (activeTab === tabname) {
         tabs.forEach((tab, index) => {
           if (tab.name === tabname) {
             let nextTab = tabs[index + 1] || tabs[index - 1]
             if (nextTab) {
-              activeName = nextTab.name
+              activePage = nextTab.link
+              activeTab = nextTab.name
             }
           }
         })
       }
-      state.nowTab = activeName
+      state.nowTab = activeTab
+      state.nowPages = activePage
       state.tabList = tabs.filter(tab => tab.name !== tabname)
     }
   },
