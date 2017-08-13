@@ -1,18 +1,22 @@
+import local from 'assets/js/local'
 export default {
   state: {
     nowIndex: 0
   },
   getters: {
-    nowIndex: state => state.nowIndex
+    nowIndex: state => state.nowIndex ? state.nowIndex : local.getItem('leftNav')
   },
   mutations: {
-    to (state, index) {
+    reset (state, index) {
       state.nowIndex = index
+      local.setItem('leftNav', index)
     }
   },
   actions: {
-    to: ({
+    reset: ({
       commit
-    }, key) => commit('to', key)
+    }, key) => {
+      commit('reset', key)
+    }
   }
 }

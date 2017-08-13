@@ -1,6 +1,6 @@
 <template>
   <ul class="topnav">
-    <li v-for="(li,index) in navItems" :key="li.index" @click="to(index)">
+    <li v-for="(li,index) in navItems" :key="li.index" @click="reset(index)">
       <router-link :to="li.link">{{li.title}}</router-link>
     </li>
   </ul>
@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'to'
+      'reset'
     ])
   }
 }
