@@ -2,7 +2,7 @@
 	<div class="topexit">
 		<div class="topexit-main">
 			<router-link to="/user">{{user.name}}</router-link>
-			<a href="" @click='logOut'>退出</a>
+			<a href="#/login" @click='logOut'>退出</a>
 		</div>
 	</div>
 </template>
