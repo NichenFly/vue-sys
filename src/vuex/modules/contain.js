@@ -78,17 +78,13 @@ export default {
       state.nowTab = activeTab
       state.nowPages = activePage
       state.tabList = tabs.filter(tab => tab.name !== tabname)
-      // 如果数据为空，返回当前首页
-      if (tabs) {
-        location.reload()
-      }
     }
   },
   actions: {
     getItems ({
       commit
     }, key) {
-      axios.get('./../../../static/data.json')
+      axios.get('/static/data.json')
         .then(function (res) {
           commit('GET_ITEMS', res.data)
         })
