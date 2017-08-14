@@ -78,6 +78,9 @@ export default {
       state.nowTab = activeTab
       state.nowPages = activePage
       state.tabList = tabs.filter(tab => tab.name !== tabname)
+      if (tabs.length === 1) {
+        location.reload()
+      }
     }
   },
   actions: {
