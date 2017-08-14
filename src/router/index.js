@@ -13,7 +13,7 @@ const vueform = resolve => require(['components/pages/vueForm'], resolve)
 const vueupload = resolve => require(['components/pages/vueUpload'], resolve)
 const vuecascader = resolve => require(['components/pages/vueCascader'], resolve)
 const vueslider = resolve => require(['components/pages/vueSlider'], resolve)
-const vuecharts = resolve => require(['components/pages/vueCharts'], resolve)
+const vuetree = resolve => require(['components/pages/vueTree'], resolve)
 const vuetransfer = resolve => require(['components/pages/vueTransfer'], resolve)
 
 export default new Router({
@@ -51,8 +51,8 @@ export default new Router({
       path: '/main/vueslider',
       component: vueslider
     }, {
-      path: '/main/vuecharts',
-      component: vuecharts
+      path: '/main/vuetree',
+      component: vuetree
     }, {
       path: '/main/vuetransfer',
       component: vuetransfer

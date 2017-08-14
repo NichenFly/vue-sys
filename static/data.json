@@ -2,7 +2,7 @@
   "leftNav": [{
     "name": "1",
     "icon": "el-icon-message",
-    "title": "分类1-1",
+    "title": "分类1",
     "subs": [{
       "name": "1-1-1",
       "link": "/main/vuetable",
@@ -40,9 +40,9 @@
     "title": "分类3",
     "subs": [{
       "name": "1-3-1",
-      "link": "/main/vuecharts",
-      "title": "图表",
-      "breadcrumb": ["小思阅读", "分类3", "图表"]
+      "link": "/main/vuetree",
+      "title": "树形结构",
+      "breadcrumb": ["小思阅读", "分类3", "树形结构"]
     }, {
       "name": "1-3-2",
       "link": "/main/vuetransfer",
