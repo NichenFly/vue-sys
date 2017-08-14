@@ -59,6 +59,9 @@ export default new Router({
           path: '/arts/vueform',
           component: vueform
         }, {
+          path: '/read/vueupload',
+          component: vueupload
+        }, {
           path: '/arts/vuecascader',
           component: vuecascader
         }, {
@@ -76,12 +79,6 @@ export default new Router({
         }, {
           path: '/course/vueform',
           component: vueform
-        }, {
-          path: '/course/vueupload',
-          component: vueupload
-        }, {
-          path: '/course/vuecascader',
-          component: vuecascader
         }
       ]
     }
