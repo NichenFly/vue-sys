@@ -1,15 +1,23 @@
 import * as types from './../mutations-types'
+import router from 'router'
 
 export default {
   state: {
-    form: ''
+    form: {
+      username: '',
+      password: ''
+    },
+    msg: ''
   },
   getters: {
-    form: state => state.form
+    form: state => state.form,
+    msg: state => state.msg
   },
   mutations: {
     [types.LOGIN] (state) {
-      state.form = '2222'
+      router.push('/index')
+      state.form.username = ''
+      state.form.password = ''
     }
   },
   actions: {
