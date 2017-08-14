@@ -20,9 +20,6 @@ export default {
     topExit,
     topNav,
     footerNav
-  },
-  created () {
-    this.$store.dispatch('getItems')
   }
 }
 </script>

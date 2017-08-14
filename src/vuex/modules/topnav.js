@@ -17,7 +17,7 @@ export default {
     reset: ({
       commit, getters, rootState
     }, key) => {
-      let tabs = rootState.contain.tabList
+      let tabs = rootState.contain.nowTab
       if (tabs) {
         location.reload()
       }

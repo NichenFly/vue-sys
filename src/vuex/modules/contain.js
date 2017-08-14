@@ -1,5 +1,5 @@
 import * as types from './../mutations-types'
-import axios from 'axios'
+import api from 'assets/js/api'
 
 export default {
   state: {
@@ -84,7 +84,7 @@ export default {
     getItems ({
       commit
     }, key) {
-      axios.get('./static/data.json')
+      api.get('/contain')
         .then(function (res) {
           commit('GET_ITEMS', res.data)
         })
