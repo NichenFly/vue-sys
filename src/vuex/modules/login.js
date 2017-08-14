@@ -2,14 +2,14 @@ import * as types from './../mutations-types'
 
 export default {
   state: {
-    user: ''
+    form: ''
   },
   getters: {
-    user: state => state.user
+    form: state => state.form
   },
   mutations: {
     [types.LOGIN] (state) {
-      state.user = '2222'
+      state.form = '2222'
     }
   },
   actions: {
