@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <div class="look">{{user}}</div>
+    <div class="look">{{form}}</div>
     <button @click="logIn">sdsa</button>
   </div>
 </template>
@@ -10,7 +10,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   computed: {
     ...mapGetters([
-      'user'
+      'form'
     ])
   },
   methods: {
