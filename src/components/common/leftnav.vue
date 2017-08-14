@@ -1,7 +1,7 @@
 <template>
   <div class="leftnav">
     <el-menu theme="dark" unique-opened router :default-active="nowPages">
-      <el-submenu v-for="item in navItems[nowIndex].leftNav" :key="item.index" :index="item.name">
+      <el-submenu v-for="item in leftNav" :key="item.index" :index="item.name">
         <template slot="title">
           <i :class="item.icon"></i>{{item.title}}
         </template>
@@ -16,8 +16,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   computed: {
     ...mapGetters([
-      'navItems',
-      'nowIndex',
+      'leftNav',
       'nowPages'
     ])
   },

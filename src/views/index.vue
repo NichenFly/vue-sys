@@ -1,6 +1,6 @@
 <template>
-  <div class="user">
-    个人中心
+  <div class="index">
+    首页
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .user{
+  .index{
     padding: 10px;
   }
 </style>

@@ -1,4 +1,6 @@
 // export const DEMO = 'DEMO'
+// 登录
+export const LOGIN = 'LOGIN'
 // 获取数据
 export const GET_ITEMS = 'GET_ITEMS'
 // 增加tab

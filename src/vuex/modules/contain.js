@@ -4,7 +4,7 @@ import axios from 'axios'
 export default {
   state: {
     // 左侧导航
-    navItems: [],
+    leftNav: [],
     // 右侧内容
     tabList: [],
     breadcrumb: [],
@@ -13,7 +13,7 @@ export default {
   },
   getters: {
     // 左侧导航
-    navItems: state => state.navItems,
+    leftNav: state => state.leftNav,
     // 右侧内容
     tabList: state => state.tabList,
     breadcrumb: state => state.breadcrumb,
@@ -23,7 +23,7 @@ export default {
   mutations: {
     // 获取数据
     [types.GET_ITEMS] (state, res) {
-      state.navItems = res.navItems
+      state.leftNav = res.leftNav
     },
     // 切换tab
     [types.TAB_CUT] (state, tabname) {
