@@ -1,6 +1,5 @@
 import * as types from './../mutations-types'
 import axios from 'axios'
-import router from 'router'
 
 export default {
   state: {
@@ -81,7 +80,7 @@ export default {
       state.tabList = tabs.filter(tab => tab.name !== tabname)
       // 如果数据为空，返回当前首页
       if (tabs) {
-        router.push('/')
+        location.reload()
       }
     }
   },
@@ -89,7 +88,7 @@ export default {
     getItems ({
       commit
     }, key) {
-      axios.get('https://www.easy-mock.com/mock/594b682e8ac26d795f42fdff/demo2/data')
+      axios.get('./../../../static/data.json')
         .then(function (res) {
           commit('GET_ITEMS', res.data)
         })
