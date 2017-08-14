@@ -1,0 +1,118 @@
+{
+  "navItems": [{
+    "link": "/read",
+    "icon": "el-icon-message",
+    "title": "小思阅读",
+    "leftNav": [{
+      "name": "1",
+      "icon": "el-icon-message",
+      "title": "分类1-1",
+      "subs": [{
+        "name": "1-1-1",
+        "link": "/read/vuetable",
+        "title": "vue表格",
+        "breadcrumb": ["小思阅读", "分类1", "vue表格"]
+      }, {
+        "name": "1-1-2",
+        "link": "/read/vueform",
+        "title": "vue表单",
+        "breadcrumb": ["小思阅读", "分类1", "vue表单"]
+      }]
+    }, {
+      "name": "2",
+      "icon": "el-icon-menu",
+      "title": "分类2",
+      "subs": [{
+        "name": "1-2-1",
+        "link": "/read/vueupload",
+        "title": "vue上传",
+        "breadcrumb": ["小思阅读", "分类2", "vue上传"]
+      }, {
+        "name": "1-2-2",
+        "link": "/read/vuecascader",
+        "title": "级联选择器",
+        "breadcrumb": ["小思阅读", "分类2", "级联选择器"]
+      }, {
+        "name": "1-2-3",
+        "link": "/read/vueslider",
+        "title": "滑块",
+        "breadcrumb": ["小思阅读", "分类2", "滑块"]
+      }]
+    }, {
+      "name": "3",
+      "icon": "el-icon-menu",
+      "title": "分类3",
+      "subs": [{
+        "name": "1-3-1",
+        "link": "/read/vuecharts",
+        "title": "图表",
+        "breadcrumb": ["小思阅读", "分类3", "图表"]
+      }, {
+        "name": "1-3-2",
+        "link": "/read/vuetransfer",
+        "title": "穿梭框",
+        "breadcrumb": ["小思阅读", "分类3", "穿梭框"]
+      }]
+    }]
+  }, {
+    "link": "/arts",
+    "icon": "el-icon-menu",
+    "title": "小思艺术",
+    "leftNav": [{
+      "name": "1",
+      "icon": "el-icon-message",
+      "title": "分类1-2",
+      "subs": [{
+        "name": "2-1-1",
+        "link": "/arts/vuetable",
+        "title": "vue表格",
+        "breadcrumb": ["小思艺术", "分类1", "vue表格"]
+      }, {
+        "name": "2-1-2",
+        "link": "/arts/vueform",
+        "title": "vue表单",
+        "breadcrumb": ["小思艺术", "分类1", "vue表单"]
+      }]
+    }, {
+      "name": "2",
+      "icon": "el-icon-menu",
+      "title": "分类2",
+      "subs": [{
+        "name": "2-2-1",
+        "link": "/arts/vueupload",
+        "title": "vue上传",
+        "breadcrumb": ["小思艺术", "分类2", "vue上传"]
+      }, {
+        "name": "2-2-2",
+        "link": "/arts/vuecascader",
+        "title": "级联选择器",
+        "breadcrumb": ["小思艺术", "分类2", "级联选择器"]
+      }, {
+        "name": "2-2-3",
+        "link": "/arts/vueslider",
+        "title": "滑块",
+        "breadcrumb": ["小思艺术", "分类2", "滑块"]
+      }]
+    }]
+  }, {
+    "link": "/course",
+    "icon": "el-icon-setting",
+    "title": "小思课程",
+    "leftNav": [{
+      "name": "1",
+      "icon": "el-icon-message",
+      "title": "分类1-3",
+      "subs": [{
+        "name": "3-1-1",
+        "link": "/course/vuetable",
+        "title": "vue表格",
+        "breadcrumb": ["小思课程", "分类1", "vue表格"]
+      }, {
+        "name": "3-1-2",
+        "link": "/course/vueform",
+        "title": "vue表单",
+        "breadcrumb": ["小思课程", "分类1", "vue表单"]
+      }]
+    }]
+  }]
+}

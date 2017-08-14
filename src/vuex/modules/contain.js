@@ -84,7 +84,7 @@ export default {
     getItems ({
       commit
     }, key) {
-      axios.get('/static/data.json')
+      axios.get('./static/data.json')
         .then(function (res) {
           commit('GET_ITEMS', res.data)
         })
