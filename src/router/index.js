@@ -16,46 +16,107 @@ const vueslider = resolve => require(['components/pages/vueSlider'], resolve)
 const vuetree = resolve => require(['components/pages/vueTree'], resolve)
 const vuetransfer = resolve => require(['components/pages/vueTransfer'], resolve)
 
-export default new Router({
-  routes: [{
-    path: '*',
-    component: NotFound
-  }, {
-    path: '/',
-    redirect: 'index'
-  }, {
-    path: '/login',
-    component: login
-  }, {
-    path: '/index',
-    component: index
-  }, {
-    path: '/user',
-    component: user
-  }, {
-    path: '/main',
-    component: contain,
-    children: [{
-      path: '/main/vuetable',
-      component: vuetable
+const router = new Router({
+  routes: [
+    {
+      path: '/',
+      redirect: 'index'
     }, {
-      path: '/main/vueform',
-      component: vueform
+      path: '/login',
+      name: 'login',
+      component: login
     }, {
-      path: '/main/vueupload',
-      component: vueupload
+      path: '*',
+      name: '404',
+      component: NotFound,
+      meta: {
+        requireAuth: true
+      }
     }, {
-      path: '/main/vuecascader',
-      component: vuecascader
+      path: '/index',
+      name: 'index',
+      component: index,
+      meta: {
+        requireAuth: true
+      }
     }, {
-      path: '/main/vueslider',
-      component: vueslider
+      path: '/user',
+      name: 'user',
+      component: user,
+      meta: {
+        requireAuth: true
+      }
     }, {
-      path: '/main/vuetree',
-      component: vuetree
-    }, {
-      path: '/main/vuetransfer',
-      component: vuetransfer
-    }]
-  }]
+      path: '/main',
+      component: contain,
+      meta: {
+        requireAuth: true
+      },
+      children: [{
+        path: '/main/vuetable',
+        name: 'vuetable',
+        component: vuetable,
+        meta: {
+          requireAuth: true
+        }
+      }, {
+        path: '/main/vueform',
+        name: 'vueform',
+        component: vueform,
+        meta: {
+          requireAuth: true
+        }
+      }, {
+        path: '/main/vueupload',
+        name: 'vueupload',
+        component: vueupload,
+        meta: {
+          requireAuth: true
+        }
+      }, {
+        path: '/main/vuecascader',
+        name: 'vuecascader',
+        component: vuecascader,
+        meta: {
+          requireAuth: true
+        }
+      }, {
+        path: '/main/vueslider',
+        name: 'vueslider',
+        component: vueslider,
+        meta: {
+          requireAuth: true
+        }
+      }, {
+        path: '/main/vuetree',
+        name: 'vuetree',
+        component: vuetree,
+        meta: {
+          requireAuth: true
+        }
+      }, {
+        path: '/main/vuetransfer',
+        name: 'vuetransfer',
+        component: vuetransfer,
+        meta: {
+          requireAuth: true
+        }
+      }]
+    }
+  ]
 })
+// 验证 token，存在才跳转
+router.beforeEach((to, from, next) => {
+  let login = sessionStorage.getItem('login')
+  if (to.meta.requireAuth) {
+    if (!login) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+    }
+  }
+  next()
+})
+
+export default router

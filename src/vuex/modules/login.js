@@ -17,10 +17,8 @@ export default {
   },
   mutations: {
     [types.LOGIN] (state, res) {
-      localStorage.setItem('token', res.info.token)
-      router.push('/index')
-      state.form.username = ''
-      state.form.password = ''
+      localStorage.setItem('login', res.info.token)
+      router.push({ name: 'index' })
     }
   },
   actions: {
@@ -29,6 +27,8 @@ export default {
     }, key) => {
       api.post('/user', qs.stringify(key))
       .then(function (res) {
+        state.form.username = ''
+        state.form.password = ''
         if (res.data.code === 200) {
           commit('LOGIN', res.data)
           state.msg = ''
