@@ -16,7 +16,7 @@ const vueslider = resolve => require(['components/pages/vueSlider'], resolve)
 const vuetree = resolve => require(['components/pages/vueTree'], resolve)
 const vuetransfer = resolve => require(['components/pages/vueTransfer'], resolve)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -105,3 +105,19 @@ export default new Router({
     }
   ]
 })
+// 验证 token，存在才跳转
+router.beforeEach((to, from, next) => {
+  let login = sessionStorage.getItem('login')
+  if (to.meta.requireAuth) {
+    if (!login) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+    }
+  }
+  next()
+})
+
+export default router
+
