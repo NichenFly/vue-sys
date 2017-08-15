@@ -30,76 +30,76 @@ const router = new Router({
       name: '404',
       component: NotFound,
       meta: {
-        requireAuth: true
+        requiresAuth: true
       }
     }, {
       path: '/index',
       name: 'index',
       component: index,
       meta: {
-        requireAuth: true
+        requiresAuth: true
       }
     }, {
       path: '/user',
       name: 'user',
       component: user,
       meta: {
-        requireAuth: true
+        requiresAuth: true
       }
     }, {
       path: '/main',
       component: contain,
       meta: {
-        requireAuth: true
+        requiresAuth: true
       },
       children: [{
         path: '/main/vuetable',
         name: 'vuetable',
         component: vuetable,
         meta: {
-          requireAuth: true
+          requiresAuth: true
         }
       }, {
         path: '/main/vueform',
         name: 'vueform',
         component: vueform,
         meta: {
-          requireAuth: true
+          requiresAuth: true
         }
       }, {
         path: '/main/vueupload',
         name: 'vueupload',
         component: vueupload,
         meta: {
-          requireAuth: true
+          requiresAuth: true
         }
       }, {
         path: '/main/vuecascader',
         name: 'vuecascader',
         component: vuecascader,
         meta: {
-          requireAuth: true
+          requiresAuth: true
         }
       }, {
         path: '/main/vueslider',
         name: 'vueslider',
         component: vueslider,
         meta: {
-          requireAuth: true
+          requiresAuth: true
         }
       }, {
         path: '/main/vuetree',
         name: 'vuetree',
         component: vuetree,
         meta: {
-          requireAuth: true
+          requiresAuth: true
         }
       }, {
         path: '/main/vuetransfer',
         name: 'vuetransfer',
         component: vuetransfer,
         meta: {
-          requireAuth: true
+          requiresAuth: true
         }
       }]
     }
@@ -108,7 +108,7 @@ const router = new Router({
 // 验证 token，存在才跳转
 router.beforeEach((to, from, next) => {
   let login = sessionStorage.getItem('login')
-  if (to.meta.requireAuth) {
+  if (to.meta.requiresAuth) {
     if (!login) {
       next({
         path: '/login',
