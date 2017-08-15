@@ -42,7 +42,7 @@ export default {
         link: RPC.link
       })
 
-      // 对比右列表，去重--问题
+      // 对比右列表，去重
       var rightTab = []
       var set = new Set()
       tabs.forEach((tab) => {
