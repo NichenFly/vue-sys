@@ -41,7 +41,8 @@ export default {
         name: RPC.name,
         link: RPC.link
       })
-      // 对比右列表，去重
+
+      // 对比右列表，去重--问题
       var rightTab = []
       var set = new Set()
       tabs.forEach((tab) => {
@@ -51,6 +52,7 @@ export default {
         }
       })
       state.tabList = rightTab
+
       // 面包屑
       state.breadcrumb = RPC.breadcrumb
       // 当前页面
