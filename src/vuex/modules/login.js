@@ -18,7 +18,7 @@ export default {
   mutations: {
     [types.LOGIN] (state, res) {
       localStorage.setItem('login', res.info.token)
-      router.push({ name: 'index' })
+      router.go(-1)
     }
   },
   actions: {
