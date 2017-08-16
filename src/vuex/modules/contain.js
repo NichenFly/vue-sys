@@ -46,9 +46,9 @@ export default {
       var rightTab = []
       var set = new Set()
       tabs.forEach((tab) => {
-        if (!set.has(tab.link)) {
+        if (!set.has(tab.name)) {
           rightTab.push(tab)
-          set.add(tab.link)
+          set.add(tab.name)
         }
       })
       state.tabList = rightTab
