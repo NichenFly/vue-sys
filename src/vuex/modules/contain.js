@@ -65,8 +65,10 @@ export default {
       let activeTab = state.nowTab
       let activePage = state.nowPages
       if (activeTab === tabname) {
+        // 初始化
         activePage = ''
         activeTab = ''
+        // 遍历删除
         tabs.forEach((tab, index) => {
           if (tab.name === tabname) {
             let nextTab = tabs[index + 1] || tabs[index - 1]
@@ -80,6 +82,7 @@ export default {
       state.nowTab = activeTab
       state.nowPages = activePage
       state.tabList = tabs.filter(tab => tab.name !== tabname)
+      // 如果tab为1，刷新页面
       if (tabs.length === 1) {
         location.reload()
       }
