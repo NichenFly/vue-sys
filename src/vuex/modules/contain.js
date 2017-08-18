@@ -98,13 +98,13 @@ export default {
         })
     },
 
-    tabCut: ({
-      commit
-    }, key) => commit('TAB_CUT', key),
-
     addTab: ({
       commit
     }, key) => commit('ADD_TAB', key),
+
+    tabCut: ({
+      commit
+    }, key) => commit('TAB_CUT', key),
 
     removeTab: ({
       commit
