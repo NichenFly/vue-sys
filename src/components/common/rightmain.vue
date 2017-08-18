@@ -1,7 +1,7 @@
 <template>
   <div class="rightmain">
     <router-link :to="nowPages">
-      <el-tabs type="card" closable :value="nowTab" @tab-remove="removeTab" @tab-click="tabCut" v-if="nowTab">
+      <el-tabs type="card" closable :value="nowTab" @tab-remove.self="removeTab" @tab-click.self="tabCut" v-if="nowTab">
         <el-tab-pane v-for="(item, index) in tabList" :key="item.name" :label="item.title" :name="item.name">
           <el-breadcrumb separator="/" v-if="breadcrumb">
             <el-breadcrumb-item v-for="li in breadcrumb" :key="li.index">{{li}}</el-breadcrumb-item>

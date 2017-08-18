@@ -5,7 +5,7 @@
         <template slot="title">
           <i :class="item.icon"></i>{{item.title}}
         </template>
-        <el-menu-item v-for="subitem in item.subs" :key="subitem.index" :index="subitem.link" @click="addTab(subitem)">{{subitem.title}}</el-menu-item>
+        <el-menu-item v-for="subitem in item.subs" :key="subitem.index" :index="subitem.link" @click.self="addTab(subitem)">{{subitem.title}}</el-menu-item>
       </el-submenu>
     </el-menu>
   </div>
