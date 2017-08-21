@@ -18,6 +18,9 @@ export default {
     ...mapActions([
       'reset'
     ])
+  },
+  created () {
+    this.$store.dispatch('getItems')
   }
 }
 </script>

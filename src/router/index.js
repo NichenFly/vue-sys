@@ -5,7 +5,6 @@ Vue.use(Router)
 const NotFound = resolve => require(['views/notfound'], resolve)
 const user = resolve => require(['views/user'], resolve)
 const login = resolve => require(['views/login'], resolve)
-const index = resolve => require(['views/index'], resolve)
 const contain = resolve => require(['views/contain'], resolve)
 
 const vuetable = resolve => require(['components/pages/vueTable'], resolve)
@@ -19,13 +18,6 @@ const vuetransfer = resolve => require(['components/pages/vueTransfer'], resolve
 const router = new Router({
   routes: [
     {
-      path: '/',
-      redirect: 'index'
-    }, {
-      path: '/login',
-      name: 'login',
-      component: login
-    }, {
       path: '*',
       name: '404',
       component: NotFound,
@@ -33,12 +25,9 @@ const router = new Router({
         requireAuth: true
       }
     }, {
-      path: '/index',
-      name: 'index',
-      component: index,
-      meta: {
-        requireAuth: true
-      }
+      path: '/login',
+      name: 'login',
+      component: login
     }, {
       path: '/user',
       name: 'user',
@@ -47,61 +36,116 @@ const router = new Router({
         requireAuth: true
       }
     }, {
-      path: '/main',
+      path: '/read',
       component: contain,
       meta: {
         requireAuth: true
       },
-      children: [{
-        path: '/main/vuetable',
-        name: 'vuetable',
-        component: vuetable,
-        meta: {
-          requireAuth: true
+      children: [
+        {
+          path: '/read/vuetable',
+          component: vuetable,
+          meta: {
+            requireAuth: true
+          }
+        }, {
+          path: '/read/vueform',
+          component: vueform,
+          meta: {
+            requireAuth: true
+          }
+        }, {
+          path: '/read/vueupload',
+          component: vueupload,
+          meta: {
+            requireAuth: true
+          }
+        }, {
+          path: '/read/vuecascader',
+          component: vuecascader,
+          meta: {
+            requireAuth: true
+          }
+        }, {
+          path: '/read/vueslider',
+          component: vueslider,
+          meta: {
+            requireAuth: true
+          }
+        }, {
+          path: '/read/vuetree',
+          component: vuetree,
+          meta: {
+            requireAuth: true
+          }
+        }, {
+          path: '/read/vuetransfer',
+          component: vuetransfer,
+          meta: {
+            requireAuth: true
+          }
         }
-      }, {
-        path: '/main/vueform',
-        name: 'vueform',
-        component: vueform,
-        meta: {
-          requireAuth: true
+      ]
+    }, {
+      path: '/arts',
+      component: contain,
+      meta: {
+        requireAuth: true
+      },
+      children: [
+        {
+          path: '/arts/vuetable',
+          component: vuetable,
+          meta: {
+            requireAuth: true
+          }
+        }, {
+          path: '/arts/vueform',
+          component: vueform,
+          meta: {
+            requireAuth: true
+          }
+        }, {
+          path: '/arts/vueupload',
+          component: vueupload,
+          meta: {
+            requireAuth: true
+          }
+        }, {
+          path: '/arts/vuecascader',
+          component: vuecascader,
+          meta: {
+            requireAuth: true
+          }
+        }, {
+          path: '/arts/vueslider',
+          component: vueslider,
+          meta: {
+            requireAuth: true
+          }
         }
-      }, {
-        path: '/main/vueupload',
-        name: 'vueupload',
-        component: vueupload,
-        meta: {
-          requireAuth: true
+      ]
+    }, {
+      path: '/learn',
+      component: contain,
+      meta: {
+        requireAuth: true
+      },
+      children: [
+        {
+          path: '/learn/vuetable',
+          component: vuetable,
+          meta: {
+            requireAuth: true
+          }
+        }, {
+          path: '/learn/vueform',
+          component: vueform,
+          meta: {
+            requireAuth: true
+          }
         }
-      }, {
-        path: '/main/vuecascader',
-        name: 'vuecascader',
-        component: vuecascader,
-        meta: {
-          requireAuth: true
-        }
-      }, {
-        path: '/main/vueslider',
-        name: 'vueslider',
-        component: vueslider,
-        meta: {
-          requireAuth: true
-        }
-      }, {
-        path: '/main/vuetree',
-        name: 'vuetree',
-        component: vuetree,
-        meta: {
-          requireAuth: true
-        }
-      }, {
-        path: '/main/vuetransfer',
-        name: 'vuetransfer',
-        component: vuetransfer,
-        meta: {
-          requireAuth: true
-        }
-      }]
+      ]
     }
   ]
 })

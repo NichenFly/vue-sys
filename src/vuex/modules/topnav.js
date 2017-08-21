@@ -1,17 +1,18 @@
 export default {
   state: {
     topNav: [{
-      link: '/index',
-      title: '首页'
+      link: '/read',
+      title: '小思阅读'
     }, {
-      link: '/main',
-      title: '内容'
+      link: '/arts',
+      title: '小思艺术'
+    }, {
+      link: '/learn',
+      title: '小思课程'
     }]
   },
   getters: {
     topNav: state => state.topNav
-  },
-  mutations: {
   },
   actions: {
     reset: ({

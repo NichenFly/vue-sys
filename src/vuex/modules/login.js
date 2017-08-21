@@ -16,16 +16,22 @@ export default {
     msg: state => state.msg
   },
   mutations: {
+    // 登录
     [types.LOGIN] (state, res) {
       localStorage.setItem('login', res.info.token)
-      router.push('/index')
+      router.push('/read')
+    },
+
+     // 获取数据
+    [types.GET_ITEMS] (state, res) {
+      state.leftNav = res.data
     }
   },
   actions: {
     logIn: ({
       commit, state
     }, key) => {
-      api.post('/user', qs.stringify(key))
+      api.post('/login', qs.stringify(key))
       .then(function (res) {
         state.form.username = ''
         state.form.password = ''
@@ -36,6 +42,15 @@ export default {
           state.msg = res.data.message
         }
       })
+    },
+
+    getItems ({
+      commit
+    }, key) {
+      api.get('/data')
+        .then(function (res) {
+          commit('GET_ITEMS', res.data)
+        })
     }
   }
 }
