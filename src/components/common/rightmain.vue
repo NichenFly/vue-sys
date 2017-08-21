@@ -14,12 +14,18 @@
         </el-tab-pane>
       </el-tabs>
     </router-link>
+    <main-index v-if="tabList.length===0"></main-index>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import mainIndex from 'components/common/index'
+
 export default {
+  components: {
+    mainIndex
+  },
   computed: {
     ...mapGetters([
       'nowPages',

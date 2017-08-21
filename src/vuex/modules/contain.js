@@ -1,9 +1,10 @@
 import * as types from './../mutations-types'
+import api from 'assets/js/api'
 
 export default {
   state: {
     // 左侧导航
-    leftNav: [],
+    data: [],
     // 右侧内容
     tabList: [],
     breadcrumb: [],
@@ -12,7 +13,7 @@ export default {
   },
   getters: {
     // 左侧导航
-    leftNav: state => state.leftNav,
+    data: state => state.data,
     // 右侧内容
     tabList: state => state.tabList,
     breadcrumb: state => state.breadcrumb,
@@ -20,6 +21,10 @@ export default {
     nowTab: state => state.nowTab
   },
   mutations: {
+   // 获取数据
+    [types.GET_ITEMS] (state, res) {
+      state.data = res.data
+    },
     // 切换tab
     [types.TAB_CUT] (state, tabname) {
       let Inx = tabname.index
@@ -84,6 +89,14 @@ export default {
     }
   },
   actions: {
+    getItems ({
+      commit
+    }, key) {
+      api.get('/data')
+        .then(function (res) {
+          commit('GET_ITEMS', res.data)
+        })
+    },
 
     addTab: ({
       commit

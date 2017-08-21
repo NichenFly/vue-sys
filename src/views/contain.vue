@@ -12,10 +12,10 @@ export default {
   components: {
     leftNav,
     rightMain
-  },
-  created () {
-    this.$store.dispatch('getItems')
   }
+  // created () {
+  //   this.$store.dispatch('getItems')
+  // }
 }
 </script>
 

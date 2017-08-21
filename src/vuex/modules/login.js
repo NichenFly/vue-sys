@@ -20,11 +20,6 @@ export default {
     [types.LOGIN] (state, res) {
       localStorage.setItem('login', res.info.token)
       router.push('/read')
-    },
-
-     // 获取数据
-    [types.GET_ITEMS] (state, res) {
-      state.leftNav = res.data
     }
   },
   actions: {
@@ -42,15 +37,6 @@ export default {
           state.msg = res.data.message
         }
       })
-    },
-
-    getItems ({
-      commit
-    }, key) {
-      api.get('/data')
-        .then(function (res) {
-          commit('GET_ITEMS', res.data)
-        })
     }
   }
 }

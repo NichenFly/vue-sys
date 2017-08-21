@@ -1,23 +1,22 @@
+import local from 'assets/js/local'
 export default {
   state: {
-    topNav: [{
-      link: '/read',
-      title: '小思阅读'
-    }, {
-      link: '/arts',
-      title: '小思艺术'
-    }, {
-      link: '/learn',
-      title: '小思课程'
-    }]
+    nowIndex: ''
   },
   getters: {
-    topNav: state => state.topNav
+    nowIndex: state => state.nowIndex ? state.nowIndex : local.getItem('index')
+  },
+  mutations: {
+    reset (state, key) {
+      state.nowIndex = key
+      local.setItem('index', key)
+    }
   },
   actions: {
     reset: ({
-      commit, getters, rootState
+      state, commit, getters, rootState
     }, key) => {
+      commit('reset', key)
       let tabs = rootState.contain.nowTab
       if (tabs) {
         location.reload()
